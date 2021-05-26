@@ -15,8 +15,11 @@ def check_postcode():
     user_postcode = input('Please enter a valid postcode: ')
     url = 'https://api.postcodes.io/postcodes/'
     post_api_response = requests.get(url+user_postcode)
-    print(post_api_response)
-
+    print(post_api_response.status_code)
+    if post_api_response.status_code == 200:
+        print(f'Thank you for your request: {post_api_response.status_code}')
+    else:
+        print('oh no! Incorrect postcode')
 check_postcode()
 
 
